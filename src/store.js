@@ -1,8 +1,9 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
+const initialStateAccount = { balance: 0, loan: 0, loanPurpose: "" };
 
-const initialState = { balance: 0, loan: 0, loanPurpose: "" };
+const initialStateCustomer = { fullName: "", nationalID: "", createdAt: "" };
 
-function reducer(state = initialState, action) {
+function accountReducer(state = initialStateAccount, action) {
   switch (action.type) {
     case "account/deposit":
       return { ...state, balance: state.balance + action.payload };
@@ -32,7 +33,31 @@ function reducer(state = initialState, action) {
   }
 }
 
-const store = createStore(reducer);
+function customerReducer(state = initialStateCustomer, action) {
+  switch (action.type) {
+    case "customer/createCustomer":
+      return {
+        ...state,
+        fullName: action.payload.fullName,
+        nationalID: action.payload.nationalID,
+        createdAt: action.payload.createdAt,
+      };
+
+    case "customer/updateName":
+      return { ...state, fullName: action.payload };
+
+    default:
+      return state;
+  }
+}
+
+const rootReducer = combineReducers({
+  account: accountReducer,
+  customer: customerReducer,
+});
+
+const store = createStore(rootReducer);
+console.log(store);
 
 store.dispatch(deposit(500));
 console.log(store.getState());
@@ -43,7 +68,7 @@ console.log(store.getState());
 store.dispatch(requestLoan());
 console.log(store.getState());
 
-store.dispatch(payLoan(1000));
+store.dispatch(payLoan(1000, "Buy a cheap car"));
 console.log(store.getState());
 
 // Action creators
@@ -65,3 +90,18 @@ function requestLoan(amount, purpose) {
 function payLoan() {
   return { type: "account/payLoan" };
 }
+
+// Customer
+function createCustomer(fullName, nationalID) {
+  return {
+    type: "customer/createCustomer",
+    payload: { fullName, nationalID, createdAt: new Date().toISOString() },
+  };
+}
+
+function updateName(fullName) {
+  return { type: "customer/updateName", payload: fullName };
+}
+
+store.dispatch(createCustomer("Denis Daniel", "8923403498"));
+console.log(store.getState());
