@@ -12,17 +12,14 @@ function AccountOperations() {
   const dispatch = useDispatch();
 
   const account = useSelector((store) => store.account);
-  const {
-    loan: currentLoanAmount,
-    loanPurpose: currentLoanPurpose,
-    balance,
-  } = account;
+  const { loan: currentLoanAmount, loanPurpose: currentLoanPurpose } = account;
 
   function handleDeposit() {
     if (!depositAmount) return;
 
-    dispatch(deposit(depositAmount));
+    dispatch(deposit(depositAmount, currency));
     setDepositAmount("");
+    setCurrency("");
   }
 
   function handleWithdrawal() {
