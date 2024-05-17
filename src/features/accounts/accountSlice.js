@@ -42,7 +42,7 @@ function withdraw(amount) {
 function requestLoan(amount, purpose) {
   return {
     type: "account/requestLoan",
-    payload: { amount: amount, purpose: "Buy a car" },
+    payload: { amount: amount, purpose: purpose },
   };
 }
 
