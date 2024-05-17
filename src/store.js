@@ -8,7 +8,7 @@ const reducer = function (state = initialState, action) {
       return { ...state, balance: state.balance + action.payload };
 
     case "account/withdraw":
-      return { ...state, balance: state.balance - action.payloads };
+      return { ...state, balance: state.balance - action.payload };
 
     case "account/requestLoan":
       if (state.loan > 0) return state;
