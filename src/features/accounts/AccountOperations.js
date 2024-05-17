@@ -16,10 +16,11 @@ function AccountOperations() {
   function handlePayLoan() {}
 
   return (
-    <div>
+    <section>
       <h2>Your account operations</h2>
+      
       <div className="inputs">
-        <div>
+        <p>
           <label>Deposit</label>
           <input
             type="number"
@@ -36,9 +37,9 @@ function AccountOperations() {
           </select>
 
           <button onClick={handleDeposit}>Deposit {depositAmount}</button>
-        </div>
+        </p>
 
-        <div>
+        <p>
           <label>Withdraw</label>
           <input
             type="number"
@@ -48,9 +49,9 @@ function AccountOperations() {
           <button onClick={handleWithdrawal}>
             Withdraw {withdrawalAmount}
           </button>
-        </div>
+        </p>
 
-        <div>
+        <p>
           <label>Request loan</label>
           <input
             type="number"
@@ -64,14 +65,14 @@ function AccountOperations() {
             placeholder="Loan purpose"
           />
           <button onClick={handleRequestLoan}>Request loan</button>
-        </div>
+        </p>
 
-        <div>
+        <p>
           <span>Pay back $X</span>
           <button onClick={handlePayLoan}>Pay loan</button>
-        </div>
+        </p>
       </div>
-    </div>
+    </section>
   );
 }
 
