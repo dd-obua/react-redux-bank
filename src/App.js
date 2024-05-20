@@ -1,3 +1,5 @@
+import React from "react";
+
 import CreateCustomer from "./features/customers/CreateCustomer";
 import Customer from "./features/customers/Customer";
 import AccountOperations from "./features/accounts/AccountOperations";
@@ -9,7 +11,12 @@ function App() {
 
   return (
     <div>
-      <h1>🏦 The React-Redux Bank ⚛️</h1>
+      <h1>
+        <span role="img" aria-label="Building">
+          🏦
+        </span>
+        The React-Redux Bank ⚛️
+      </h1>
       {fullName === "" ? (
         <CreateCustomer />
       ) : (
