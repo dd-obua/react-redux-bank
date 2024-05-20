@@ -23,9 +23,10 @@ function AccountOperations() {
   function handleDeposit() {
     if (!depositAmount) return;
 
-    dispatch(deposit(depositAmount, currency));
+    // dispatch(deposit(depositAmount, currency));
+    dispatch(deposit(depositAmount));
     setDepositAmount("");
-    setCurrency("USD");
+    // setCurrency("USD");
   }
 
   function handleWithdrawal() {
@@ -115,3 +116,5 @@ function AccountOperations() {
 }
 
 export default AccountOperations;
+
+requestLoan(10000, "Car");
