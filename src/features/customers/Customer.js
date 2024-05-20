@@ -10,7 +10,7 @@ function Customer() {
       <span role="img" aria-label="Clap">
         👋
       </span>
-      Welcome, {name}
+      Welcome {name}
     </h2>
   );
 }
